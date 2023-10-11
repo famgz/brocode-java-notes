@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.io.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.util.Scanner;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -18,7 +20,7 @@ import java.util.InputMismatchException;
 public class Main {
 
 // 2. VARIABLES
-    public static void main1(String[] args) {
+    public static void main2(String[] args) {
 
         System.out.println("Hello, World");  // println = "print line" adds newline char
         System.out.print("I love pizza\n");
@@ -63,7 +65,7 @@ public class Main {
 
 
 // 4. USER INPUT
-    public static void main2(String[] args) {
+    public static void main4(String[] args) {
         // import java.util.Scanner;
 
         Scanner scanner = new Scanner(System.in);
@@ -85,7 +87,7 @@ public class Main {
 
 
 // 5. EXPRESSIONS
-    public static void main3(String[] args) {
+    public static void main5(String[] args) {
         // expression = operands & operators
         // operands = values, variables, numnbers, quantity
         // operators = + - * / %
@@ -103,7 +105,7 @@ public class Main {
 
 
 // 6. GUI INTRO
-    public static void main4(String[] args) {
+    public static void main6(String[] args) {
         //import javax.swing.JOptionPane;
 
         String name = JOptionPane.showInputDialog("Enter your name");
@@ -115,7 +117,7 @@ public class Main {
 
 
 // 7. MATH CLASS
-    public static void main5(String[] args) {
+    public static void main7(String[] args) {
 
         double x = 3.14;
         double y = -10;
@@ -141,7 +143,7 @@ public class Main {
 
 
 // 8. RANDOM NUMBERS
-    public static void main6(String[] args) {
+    public static void main8(String[] args) {
         // import java.util.Random;
         
         Random random = new Random();
@@ -155,7 +157,7 @@ public class Main {
 
 
 // 9. IF STATEMENTS
-    public static void main7(String[] args) {
+    public static void main9(String[] args) {
         int age = 18;
 
         if(age>=75) {
@@ -174,7 +176,7 @@ public class Main {
 
 
 // 10. SWITCHES
-    public static void main8(String[] args) {
+    public static void main10(String[] args) {
         int dayWeek = 2;
         String day = "";
 
@@ -208,7 +210,7 @@ public class Main {
 
 
 // 11. LOGICAL OPERATORS
-    public static void main9(String[] args) {
+    public static void main11(String[] args) {
         // && = AND   || = OR   ! = NOT
         Scanner scanner = new Scanner(System.in);
 
@@ -226,7 +228,7 @@ public class Main {
 
 
 // 12. WHILE LOOPS
-    public static void main10(String[] args) {
+    public static void main12(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String name  = "";
         String name2 = "";
@@ -248,7 +250,7 @@ public class Main {
 
 
 // 13. FOR LOOPS
-    public static void main11(String[] args) {
+    public static void main13(String[] args) {
         for(int i=0; i<10; i++) {
             System.out.println(i);
         }
@@ -256,7 +258,7 @@ public class Main {
 
 
 // 14. NESTED LOOPS
-    public static void main12(String[] args) {
+    public static void main14(String[] args) {
         int rows = 5;
         int cols = 5;
         String symbol = "*";
@@ -271,7 +273,7 @@ public class Main {
 
 
 // 15. ARRAYS
-    public static void main13(String[] args) {
+    public static void main15(String[] args) {
         // must have same datatypes
         // pre assign
         String[] cars = {"Camaro", "Fusca", "Tesla"};
@@ -290,7 +292,7 @@ public class Main {
 
 
 // 16. 2D ARRAYS (array of arrays)
-    public static void main14(String[] args) {
+    public static void main16(String[] args) {
         // pre assign
         String[][] cars = {
             {"Camaro", "Fusca"},
@@ -312,7 +314,7 @@ public class Main {
 
 
 // 17. STRING METHODS
-    public static void main15(String[] args) {
+    public static void main17(String[] args) {
         String name      = "Bro";
         boolean compare  = name.equals("Bro");
         boolean compare2 = name.equalsIgnoreCase("Bro");
@@ -327,7 +329,7 @@ public class Main {
 
 
 // 18. WRAPPER CLASS
-    public static void main16(String[] args) {
+    public static void main18(String[] args) {
         // provides a way to use primitive data types as reference data types
         // reference data types contain useful methods
         // can be used with collections (ex. ArrayList)
@@ -357,7 +359,7 @@ public class Main {
 
 
 // 19. ARRAY LIST
-    public static void main17(String[] args) {
+    public static void main19(String[] args) {
         // a resizable array
         // elements can be added and removed after compilation phase
         // only store reference data types, not primitives
@@ -379,7 +381,7 @@ public class Main {
 
 
 // 20. 2D ARRAY LIST
-    public static void main18(String[] args) {
+    public static void main20(String[] args) {
         // a dynamic list of lists
         // can change size of these lists during runtime
 
@@ -405,7 +407,7 @@ public class Main {
 
 
 // 21. FOR-EACH LOOPS
-    public static void main19(String[] args) {
+    public static void main21(String[] args) {
         // iterate through the elements in an array/collection
         // less steps, more readable
         // less flexible
@@ -425,7 +427,7 @@ public class Main {
 
 
 // 22. METHODS
-    public static void main20(String[] args) {
+    public static void main22(String[] args) {
         hello("Bro", 15);
     }
     static void hello(String name, int age) {
@@ -438,7 +440,7 @@ public class Main {
     
 
 // 23. OVERLOAD METHODS
-    public static void main21(String[] args) {
+    public static void main23(String[] args) {
         // methods that share same name but have different parameters
         // method name + parameters = method signature
         int res = add(2,3,4,5); // will call third method
@@ -458,7 +460,7 @@ public class Main {
 
 
 // 24. PRINTF
-    public static void main22(String[] args) {
+    public static void main24(String[] args) {
         // optional method to control, format and disply texto to the console window
         // 2 arguments = format string + (object/variable/value)
         // % [flags] [precision] [width] [conversion-character]
@@ -489,14 +491,14 @@ public class Main {
 
 
 // 25. FINAL KEYWORD
-    public static void main23(String[] args) {
+    public static void main25(String[] args) {
         // cannot be changed or updated in the future (const?)
         final double PI = 3.14159;
     }
 
 
 // 26. OBJECTS (OOP)
-    public static void main24(String[] args) {
+    public static void main26(String[] args) {
         // Car.java file
         Car car = new Car();
         car.drive();
@@ -504,7 +506,7 @@ public class Main {
 
 
 // 27. CONSTRUCTORS
-    public static void main25(String[] args) {
+    public static void main27(String[] args) {
         // special method that is called when an object is instantiated
         // Human.java file
 
@@ -518,7 +520,7 @@ public class Main {
 
 
 // 28. VARIABLE SCOPES
-    public static void main26(String[] args) {
+    public static void main28(String[] args) {
         // local = declared inside a method; visible only to that method
         // global = declared outside a method but within a class; visible to all parts of a class
 
@@ -528,7 +530,7 @@ public class Main {
 
 
 // 29. OVERLOADED CONSTRUCTORS
-    public static void main27(String[] args) {
+    public static void main29(String[] args) {
         // multiple constructos within a class with the same name but with different parameters
         // name + parameters = signature
 
@@ -540,7 +542,7 @@ public class Main {
 
 
 // 30. toString BUILT-IN METHOD  
-    public static void main28(String[] args) {
+    public static void main30(String[] args) {
         // toString() = special method that all objects inherit,
         // returns a string that "textually represents" an object
         // can be used both implicity and explicity
@@ -558,7 +560,7 @@ public class Main {
 
 
 // 31. ARRAY OF OBJECTS
-    public static void main29(String[] args) {
+    public static void main31(String[] args) {
 
         class Food {
             String name;
@@ -583,7 +585,7 @@ public class Main {
 
 
 // 32. PASSING OBJECT AS ARGUMENT
-    public static void main30(String[] args) {
+    public static void main32(String[] args) {
 
         class Garage {
             void park(Car car) {
@@ -603,7 +605,7 @@ public class Main {
 
 
 // 33. STATIC KEYWORD
-    public static void main31(String[] args) {
+    public static void main33(String[] args) {
         // static = modifier. A single copy of a variable/,ethod is created and shared
         // the class "owns" the static member
         
@@ -632,7 +634,7 @@ public class Main {
 
 
 // 34. INHERITANCE
-    public static void main32(String[] args) {
+    public static void main34(String[] args) {
         // the process where one class acquires attributes and methods of another
 
         // super/parent class
@@ -668,7 +670,7 @@ public class Main {
 
 
 // 35. METHOD OVERRIDING
-    public static void main33(String[] args) {
+    public static void main35(String[] args) {
         // declaring a method in sub class which is already present in parent class
         // done so that a child class can give its own implementation
 
@@ -691,7 +693,7 @@ public class Main {
 
 
 // 36. SUPER KEYWORD
-    public static void main34(String[] args) {
+    public static void main36(String[] args) {
         // keyword refers to the superclass (parent) of an object
         // very similar to the `this` keyword
 
@@ -730,7 +732,7 @@ public class Main {
 
 
 // 37. ABSTRACTION
-    public static void main35(String[] args) {
+    public static void main37(String[] args) {
         // astract classes cannot be instantiated, but they can have a subclass
         // abstract methods are declared without an implementation
         // add layer of security
@@ -755,7 +757,7 @@ public class Main {
 
 
 // 38. ACCESS MODIFIERS
-    public static void main36(String[] args) {
+    public static void main38(String[] args) {
         /*
         check .screens/access_levels.jpg
             public
@@ -767,7 +769,7 @@ public class Main {
 
 
 // 39. ENCAPSULATION
-    public static void main37(String[] args) {
+    public static void main39(String[] args) {
         /*
         atributes of a class will be hidden or private,
         can be accessed only through methods (getters & setters)
@@ -798,7 +800,7 @@ public class Main {
 
 
 // 40. COPY OBJECTS
-    public static void main38(String[] args) {
+    public static void main40(String[] args) {
         // import Car.java
         Car car1 = new Car("Chev", "Camaro");
         Car car2 = new Car("Volks", "Fusca");
@@ -811,7 +813,7 @@ public class Main {
 
 
 // 41. INTERFACE
-    public static void main39(String[] args) {
+    public static void main41(String[] args) {
         /*
         a template that can be applied to a class
         a special type of class that only contains abstract methods
@@ -855,7 +857,7 @@ public class Main {
 
 
 // 42. POLYMORPHISM
-    public static void main40(String[] args) {
+    public static void main42(String[] args) {
         /*
         many - forms
         the ability of an object to identify as more than one type
@@ -891,7 +893,7 @@ public class Main {
 
 
 // 43. DYNAMIC POLYMORPHISM
-    public static void main41(String[] args) {
+    public static void main43(String[] args) {
         // polymorphism after compilation (during runtime)
         
         class Animal {
@@ -938,7 +940,7 @@ public class Main {
 
 
 // 44. EXCEPTION HANDLING
-    public static void main42(String[] args) {
+    public static void main44(String[] args) {
         /*
         an event that occurs during execution of a program
         that disrupts the normal flow of instructions
@@ -979,7 +981,7 @@ public class Main {
 
 
 // 45. FILE CLASS
-    public static void main43(String[] args) {
+    public static void main45(String[] args) {
         // import java.io.File;
         // an abstract representation of file and directory path names
 
@@ -998,7 +1000,7 @@ public class Main {
 
 
 // 46. FILE WRITER
-    public static void main44(String[] args) {
+    public static void main46(String[] args) {
         // import java.io.FileWriter;
         try {
             FileWriter writer = new FileWriter("files/poem.txt");
@@ -1014,7 +1016,7 @@ public class Main {
 
 
 // 47. FILE READER
-    public static void main45(String[] args) {
+    public static void main47(String[] args) {
         /*
         read the contents of a file as a stream of characters. One by one
         read() returns an int value which contains the byte value
@@ -1041,7 +1043,7 @@ public class Main {
 
 
 // 48. AUDIO
-    public static void main46(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public static void main48(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         // import javax.sound.sampled.*;
 
         Scanner scanner = new Scanner(System.in);
@@ -1089,7 +1091,7 @@ public class Main {
 
 
 // 74. GENERICS
-    public static void main(String[] args) {
+    public static void main74(String[] args) {
         // enable types (classes and interfaces) to be parameters when defining:
         // classes, interfaces and methods
         // a benefit is to eliminate the need to create multiple versions
@@ -1097,7 +1099,7 @@ public class Main {
         // Use 1 version for all reference data types
 
 
-        // applying generic method to print array elements
+        // --> calling generic methods to print array elements
         Integer[] intArray = {1,2,3,4,5};
         String[] stringArray = {"H", "E", "L", "L", "O"};
 
@@ -1107,76 +1109,120 @@ public class Main {
         System.out.println(getFirst(intArray));
         System.out.println(getFirst(stringArray));
 
-        // calling generic classes (must inform the type regardless)
+        // --> calling generic classes with 1 datatype (must inform the type regardless)
         MyGenericClass<Integer> myInt = new MyGenericClass<>(5);
         MyGenericClass<String> myStr = new MyGenericClass<>("Hello");
 
-        // passing differents data types
-        MyGenericClass2<String, Character> myStr2 = new MyGenericClass2<>("Hello", 'a');
-
         // it is very similar to ArrayList call
         ArrayList<String> myFriends = new ArrayList<>();
+
+        // --> calling generic classes with differents data types
+        MyGenericClass2<String, Character> myStr2 = new MyGenericClass2<>("Hello", 'a');
+
+        // which is very similar to HashMap (key, value pairs, similar to python dictionary?)
+        HashMap<Integer, String> users = new HashMap<>();
+
+        // calling generic classes with bounded types
+        MyGenericClass3<Integer, Double> myNum = new MyGenericClass3<>(125, 9.0);
     }
     
-    // GENERIC METHODS
-    // `T` is a convention but can be any name
-    // ex.: make a method to print all elements of array of different types
-    public static <T> void displayArray(T[] array) {
-        for(T x : array) {
-            System.out.print(x + " ");
+        // GENERIC METHODS
+        // `T` is a convention but can be any name
+        // ex.: make a method to print all elements of array of different types
+        public static <T> void displayArray(T[] array) {
+            for(T x : array) {
+                System.out.print(x + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
-    }
 
-    // method that return some generic
-    public static <T> T getFirst(T[] array) {
-        return array[0];
+        // method that return some generic
+        public static <T> T getFirst(T[] array) {
+            return array[0];
+            
+            /*
+            // ex.: a more practical scenario like a game rendering
+            Player player = new Player();
+            Enemy enemy = new Enemy();
+            Tree tree = new Tree();
+            
+            draw(player);
+            draw(enemy);
+            draw(tree);
+            
+            public static <T> void draw(T x) {
+                x.draw();
+            }
+            */
+        }
+
+
+        // GENERIC CLASSES
+        // generic class with 1 type
+        public static class MyGenericClass <T> {
+            T x;
+
+            MyGenericClass(T x) {
+                this.x = x;
+            }
+
+            public T getValue() {
+                return x;
+            }
+        }
+
+        // generic class with 2 types
+        public static class MyGenericClass2 <T, V> {
+            T x;
+            V y;  // V is a convention for second data type?
+
+            MyGenericClass2(T x, V y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            public T getValue() {
+                return x;
+            }
+        }
+
+        // BOUNDED TYPES
+        // you can create the objects of a generic class
+        // to have data of specific derived types
+        // ex. Number
+        // so you can pass any reference datatype as long it's a Number subclass
+        public static class MyGenericClass3 <T extends Number, V extends Number> {
+            T x;
+            V y;  // V is a convention for second data type?
+
+            MyGenericClass3(T x, V y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            public T getValue() {
+                return x;
+            }
+        }
+
+
+// 75. SERIALIZATION
+    public static void main(String[] args) {
+        // Serialization =
+        // the process of converting an object into a byte stream
+        // persists (saves the state) the object adter program exits
+        // this byte stream can be saved as a file or sent over a network
+        // can be sent to a different machine
+        // byte stream can be saved as a file (.ser) which is platform independent
+        // * think of this as if you're saving a file with the object's information
+
+        // Deserialization =
+        // the reverse process of converting a byte stream into an object
+        // * think of this as if you're loading a saved file
+
         
-        /*
-        // ex.: a more practical scenario like a game rendering
-        Player player = new Player();
-        Enemy enemy = new Enemy();
-        Tree tree = new Tree();
-        
-        draw(player);
-        draw(enemy);
-        draw(tree);
-        
-        public static <T> void draw(T x) {
-            x.draw();
-        }
-        */
     }
 
-
-    // GENERIC CLASSES
-    // generic class with 1 type
-    public static class MyGenericClass <T> {
-        T x;
-
-        MyGenericClass(T x) {
-            this.x = x;
-        }
-
-        public T getValue() {
-            return x;
-        }
-    }
-
-    // generic class with 2 types
-    public static class MyGenericClass2 <T, V> {
-        T x;
-        V y;  // V is a convention for second data type?
-
-        MyGenericClass2(T x, V y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public T getValue() {
-            return x;
-        }
-    }
 
 
 
