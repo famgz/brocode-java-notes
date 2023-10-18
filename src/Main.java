@@ -5,16 +5,19 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.sound.sampled.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import java.util.Scanner;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 
 public class Main {
@@ -1207,22 +1210,144 @@ public class Main {
 
 
 // 75. SERIALIZATION
+    public static void main75(String[] args) throws IOException, ClassNotFoundException {
+        // Serialization:
+        //   the process of converting an object into a byte stream
+        //   persists (saves the state) the object adter program exits
+        //   this byte stream can be saved as a file or sent over a network
+        //   can be sent to a different machine
+        //   byte stream can be saved as a file (.ser) which is platform independent
+        //   * think of this as if you're saving a file with the object's information
+
+        // Deserialization:
+        //   the reverse process of converting a byte stream into an object
+        //   * think of this as if you're loading a saved file
+
+        // Steps to Serialize:
+        //   1. Your object class should implement Serializable interface
+        //   2. add import java.io.Serializable;
+        //   3. FileOutputStream fileOut = new FileOutputStream(file path);
+        //   4. ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        //   5. out.writeObject(objectName);
+        //   6. out.close(); fileOut.close();
+
+        // Steps do Deserialize:
+        //   1. Declare your object (don't instantate)
+        //   2. Your class should implement Serializable interface
+        //   3. add import java.io.Serializable;
+        //   4. FileInputStream fileIn = new FileInputStream(file path);
+        //   5. ObjectInputStream in = new ObjectInputStream(fileIn);
+        //   6. objectNam = (Class) in.readObject();
+        //   7. in.close(); fileIn.close();
+
+        // Important notes:
+        //   1. children classes of a parent class that implements Serializable will do so as well
+        //   2. static fields are not serialized (they belong to the class, not an individual object)
+        //   3. the class's definition ("class file") itself is not recorded, cast it as the object type
+        //   4. Fields declared as "transient" aren't serialized, they're ignored
+        //   5. serialVersionUID is a unique version ID for a class that is serialible
+
+        // serialVersionUID:
+        // is a unique ID that functions like a version number
+        // verifies that the sender and receiver of a serialized object have loaded classes for that object that match
+        // Ensures object will be compatible between machines
+        // Number must match. Otherwise this will cause an InvalidClassException
+        // A serialVersionUID will be calculated based on class properties, members, etc
+        // A serializable class can declare its own serialVersionUID explicitly (recommended)
+
+
+        class User implements Serializable {
+
+            private static final long serialVersionUID = 1;  // explicity UID declaration
+            String name;
+            transient String password;  // `transient` means the value will be ignore in serialization
+
+            public void sayHello() {
+                System.out.println("Hello " + name);
+            }
+        }
+
+        // Serialization
+        User userS = new User();
+        userS.name = "Bro Code";
+        userS.password = "password12345";
+
+        FileOutputStream fileOut = new FileOutputStream("files/UserInfo.ser");
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(userS);
+        out.close();
+        fileOut.close();
+
+        System.out.println("object info saved!");
+
+        long serialVersionUID = ObjectStreamClass.lookup(userS.getClass()).getSerialVersionUID();
+        System.out.println(serialVersionUID);
+
+        // Deserialization
+        User userD = null;
+        FileInputStream fileIn = new FileInputStream("files/UserInfo.ser");
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        userD = (User) in.readObject();  // needs casting
+        in.close();
+        fileIn.close();
+
+        System.out.println(userD.name);
+        System.out.println(userD.password);
+        userD.sayHello();
+    }
+
+
+    // TimerTask
     public static void main(String[] args) {
-        // Serialization =
-        // the process of converting an object into a byte stream
-        // persists (saves the state) the object adter program exits
-        // this byte stream can be saved as a file or sent over a network
-        // can be sent to a different machine
-        // byte stream can be saved as a file (.ser) which is platform independent
-        // * think of this as if you're saving a file with the object's information
+        // Timer:
+        //   a facility for threads to schedule tasks
+        //   for future execution in a background thread
 
-        // Deserialization =
-        // the reverse process of converting a byte stream into an object
-        // * think of this as if you're loading a saved file
+        // TimerTask:
+        //   a task that can be scheduled for one-time
+        //   or repreated execution by a Timer
 
+        // import java.util.Timer;
+        Timer timer = new Timer();
         
+        // import java.util.TimerTask;
+        TimerTask task = new TimerTask() {
 
+            int counter = 10;
+
+            @Override
+            public void run() {
+                if (counter>0) {
+                    System.out.println(counter + " seconds");
+                    counter--;
+                }
+                else {
+                    System.out.println("Happy new year!");
+                    timer.cancel();
+                }
+            }
+        };
+
+        // run the task within delay
+        // timer.schedule(task, 3000);  // second argument is the delay, can be in ms, date, etc
         
+        // import java.util.Calendar;
+        Calendar date = Calendar.getInstance();
+        date.set(Calendar.YEAR, 2024);
+        date.set(Calendar.MONTH, Calendar.DECEMBER);
+        date.set(Calendar.DAY_OF_MONTH, 31);
+        date.set(Calendar.HOUR_OF_DAY, 23);
+        date.set(Calendar.MINUTE, 59);
+        date.set(Calendar.SECOND, 50);
+        date.set(Calendar.MILLISECOND, 0);
+        
+        // run the task in certain date
+        // timer.schedule(task, date.getTime());
+
+        // repeat a task at every interval
+        // timer.scheduleAtFixedRate(task, 0, 1000);  // run task with 0 delay, at every 1 second
+        
+        timer.scheduleAtFixedRate(task, date.getTime(), 1000);  // run task from date, at every 1 second
     }
 
 
