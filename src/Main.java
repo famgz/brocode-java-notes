@@ -1352,7 +1352,7 @@ public class Main {
 
 
     // THREADS
-    public static void main(String[] args) {
+    public static void main77(String[] args) {
         // threads = a thread of execution in a program (kind of like a virtual CPU)
         // The JVM allows an application to have multiple threads running concurrently
         // Each thread can execute parts of your code in parallel with the main thread
@@ -1361,14 +1361,15 @@ public class Main {
 
         // The JVM continues to execute threads until either one of the following occurs:
         //     1. The exit method of class Runtime has been called
-        //     2. all user threads have divide
+        //     2. all user threads have died
 
         // When a JVM starts up, there is a thread which calls the main method
         // This thread is called "main"
 
-        // Daemn thread is a low priority thread that runs in background to perform
-        // JVM terminates itself when all user thread (non-daemon thread) finish
+        // Daemon thread (opposite of user thread) is a low priority thread that runs in background to perform tasks such as garbage collection
+        // JVM terminates itself when all user threads (non-daemon thread) finish their execution
 
+        /*
         // check how many threads are running
         System.out.println(Thread.activeCount());
 
@@ -1386,10 +1387,102 @@ public class Main {
 
         // check if thread is alive
         System.out.println(Thread.currentThread().isAlive());
+        */
 
+        class MyThread extends Thread {
+            @Override
+            public void run() {
+                System.out.println("This thread is running");
+            }
+        }
+
+        MyThread thread2 = new MyThread();
+        System.out.println(thread2.isDaemon());  // false (default)
+        thread2.setDaemon(true);
+
+        thread2.start();
+        System.out.println(thread2.isAlive());
+
+        System.out.println(thread2.getName());  // Thread-0
+        thread2.setName("second thread");
+
+        System.out.println(thread2.getPriority());  // 5 (default)
+        thread2.setPriority(9);
+    }
+
+
+    // MULTI-THREADING
+    public static void main78(String[] args) throws InterruptedException {
+        // Process of execution multiple thread simultaneously
+        // Helps maximum utilization of CPU
+        // Threads are independent, they don't affect the execution of other threads
+        // An execption inone thread will not interrupt other threads
+        // useful for serving multuple clients, multiplayer games, or other mutually independent tasks
+
+        class S {
+            static void sleep(long ms) {
+                try {
+                    Thread.sleep(ms);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        // first way to create a Thread class
+        class MyThread extends Thread {
+            @Override
+            public void run() {
+                for(int i=10; i>=0; i--) {
+                    System.out.println("thread #1: " + i);
+                    S.sleep(1000);
+                }
+                System.out.println("Thread number 1 is finished");
+            }
+        }
         
+        // second way to create a Thread class
+        // use a class or subclass that implements Runnable interface)
+        // the benefit is you can still `extends` another Class
+        class MyRunnable implements Runnable {
+            @Override
+            public void run() {
+                for(int i=0; i<=10; i++) {
+                    System.out.println("thread #2: " + i);
+                    S.sleep(1000);
+                }
+                System.out.println("Thread number 2 is finished");
+            }
+        }
+
+        // first way to create a Thread class
+        MyThread thread1 = new MyThread();
+        // second way to create a Thread class
+        MyRunnable runnable1 = new MyRunnable();
+        Thread thread2 = new Thread(runnable1);
+
+        // making them daemon will stop the execution when facing an error
+        thread1.setDaemon(true);
+        thread2.setDaemon(true);
+
+        thread1.start();
+        // make main thread wait 3000 ms to start.
+        // if no interval is set it will wait until thread1 is finished
+        thread1.join(3000);
+        thread2.start();
+
+        // force error
+        System.out.println(1/0);
+    }
+
+
+    // PACKAGES
+    public static void main(String[] args) {
         
     }
+
+
+
 
 
 
