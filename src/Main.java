@@ -1298,7 +1298,7 @@ public class Main {
 
 
     // TimerTask
-    public static void main(String[] args) {
+    public static void main76(String[] args) {
         // Timer:
         //   a facility for threads to schedule tasks
         //   for future execution in a background thread
@@ -1350,6 +1350,46 @@ public class Main {
         timer.scheduleAtFixedRate(task, date.getTime(), 1000);  // run task from date, at every 1 second
     }
 
+
+    // THREADS
+    public static void main(String[] args) {
+        // threads = a thread of execution in a program (kind of like a virtual CPU)
+        // The JVM allows an application to have multiple threads running concurrently
+        // Each thread can execute parts of your code in parallel with the main thread
+        // Each thread has a priority
+        // Threads with higher priority are executed in preference compared to threads with a lower priority
+
+        // The JVM continues to execute threads until either one of the following occurs:
+        //     1. The exit method of class Runtime has been called
+        //     2. all user threads have divide
+
+        // When a JVM starts up, there is a thread which calls the main method
+        // This thread is called "main"
+
+        // Daemn thread is a low priority thread that runs in background to perform
+        // JVM terminates itself when all user thread (non-daemon thread) finish
+
+        // check how many threads are running
+        System.out.println(Thread.activeCount());
+
+        // rename thread
+        Thread.currentThread().setName("MyThread");
+
+        // name of the main thread
+        System.out.println(Thread.currentThread().getName());
+
+        // change thread priority (1-10)
+        Thread.currentThread().setPriority(7);
+        
+        // get the thread priority (1-10)
+        System.out.println(Thread.currentThread().getPriority());
+
+        // check if thread is alive
+        System.out.println(Thread.currentThread().isAlive());
+
+        
+        
+    }
 
 
 
