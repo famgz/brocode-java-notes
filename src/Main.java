@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import Tools.Toolbox;
 
 
 public class Main {
@@ -1477,10 +1478,13 @@ public class Main {
 
 
     // PACKAGES
-    public static void main(String[] args) {
-        
+    public static void main79(String[] args) {
+        // import Tools.Toolbox;
+        Toolbox toolbox = new Toolbox();
     }
 
+
+    // asd
 
 
 
