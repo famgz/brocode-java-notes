@@ -1484,21 +1484,13 @@ public class Main {
     }
 
 
-    // asd
+    // COMPILE/RUN WITH PROMPT
+    public static void main80(String[] args) {
+        
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // EXECUTABLE .JAR
+    public static void main81(String[] args) {
+        
+    }
 }
